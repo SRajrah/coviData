@@ -1,16 +1,16 @@
 <html>
-    <form action="{{ url_for('generateString')}}" method="post">
+    <form action="{{ url_for('generateString')}}" method="POST">
     <label for="firstname">First Name:</label>
     <input type="text" id="firstname" name="fname" placeholder="firstname">
     <label for="lastname">Last Name:</label>
     <input type="text" id="lastname" name="lname" placeholder="lastname">
      <p>Please select your gender:</p>
-      <input type="radio" id="facebook" name="platform" value="male">
+      <input type="radio" id="facebook" name="platform" value="facebook">
       <label for="facebook">Facebook - Please make sure you are already logged in to facebook in your browser/app</label>
       <label for="facebook"></label><br>
-      <input type="radio" id="twitter" name="platform" value="female">
+      <input type="radio" id="twitter" name="platform" value="twitter">
       <label for="twitter">Twitter</label><br>
-      <input type="radio" id="Instagram" name="platform" value="other">
+      <input type="radio" id="Instagram" name="platform" value="instagram">
       <label for="Instagram">Instagram</label><br>
     <button type="submit">Take me to resources</button>
     </form>
