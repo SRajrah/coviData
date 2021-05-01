@@ -1,5 +1,5 @@
 <html>
-    <form action="{{ url_for("generateResource")}}" method="post">
+    <form action="{{ url_for('generateString')}}" method="post">
     <label for="firstname">First Name:</label>
     <input type="text" id="firstname" name="fname" placeholder="firstname">
     <label for="lastname">Last Name:</label>
@@ -13,4 +13,5 @@
       <input type="radio" id="Instagram" name="platform" value="other">
       <label for="Instagram">Instagram</label><br>
     <button type="submit">Take me to resources</button>
+    </form>
 </html>

@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 
 def generateString():
+    print("i m here")
     if request.method == "POST":
        # getting input with name = fname in HTML form
        first_name = request.form.get("fname")
