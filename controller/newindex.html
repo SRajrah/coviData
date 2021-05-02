@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Easiest Way to Add Input Masks to Your Forms</title>
+    <link rel="stylesheet" type= "text/css"  href="{{ url_for('static', filename='styles/newstyle.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="registration-form">
+        <form action="{{ url_for('generateString')}}" method="POST">
+            <div class="form-icon">
+                <span><i class="icon icon-user"></i></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="cityName" placeholder="City" name="cityName">
+            </div>
+            <br>
+            <div class="form-group">
+                <label id="strip">
+				<i class="far fa-user"></i>Resources
+			    </label>
+            </div><br>
+            <div class="form-group">
+                <label for="bedBox">
+				<i class="far fa-user"></i>Beds
+			    </label>
+                <input type="checkbox" class="form-control items" id="bedBox" name="bedBox" value="beds">
+            </div>
+            <div class="form-group">
+                <label for="icuBox">
+				<i class="far fa-user"></i>Icu
+			    </label>
+                <input type="checkbox" class="form-control items" id="icuBox" name="icuBox" value="icu">
+            </div>
+            <div class="form-group">
+                <label for="oxygenBox">
+				<i class="far fa-user"></i>Oxygen
+			    </label>
+                <input type="checkbox" class="form-control items" id="oxygenBox" name="oxygenBox" value="oxygen">
+            </div>
+            <div class="form-group">
+                <label for="ventilatorBox">
+				<i class="far fa-user"></i>Ventilator
+			    </label>
+                <input type="checkbox" class="form-control items" id="ventilatorBox" name="ventilatorBox" value="ventilator">
+            </div>
+            <div class="form-group">
+                <label for="testBox">
+				<i class="far fa-user"></i>Tests
+			    </label>
+                <input type="checkbox" class="form-control items" id="testBox" name="testBox" value="tests">
+            </div>
+            <div class="form-group">
+                <label for="fabifluBox">
+				<i class="far fa-user"></i>Fabiflu
+			    </label>
+                <input type="checkbox" class="form-control items" id="fabifluBox" name="fabifluBox" value="fabiflu">
+            </div>
+            <div class="form-group">
+                <label for="remdesivirBox">
+				<i class="far fa-user"></i>Remdesivir
+			    </label>
+                <input type="checkbox" class="form-control items" id="remdesivirBox" name="remdesivirBox" value="remdesivir">
+            </div>
+            <div class="form-group">
+                <label for="favipiravirBox">
+				<i class="far fa-user"></i>Favipiravir
+			    </label>
+                <input type="checkbox" class="form-control items" id="favipiravirBox" name="favipiravirBox" value="favipiravir">
+            </div>
+            <div class="form-group">
+                <label for="tocilizumabBox">
+				<i class="far fa-user"></i>Tocilizumab
+			    </label>
+                <input type="checkbox" class="form-control items" id="tocilizumabBox" name="tocilizumabBox" value="tocilizumab">
+            </div>
+            <div class="form-group">
+                <label for="plasmaBox">
+				<i class="far fa-user"></i>Plasma
+			    </label>
+                <input type="checkbox" class="form-control items" id="plasmaBox" name="plasmaBox" value="plasma">
+            </div>
+            <div class="form-group">
+                <label for="foodBox">
+				<i class="far fa-user"></i>Food
+			    </label>
+                <input type="checkbox" class="form-control items" id="foodBox" name="foodBox" value="food">
+            </div>
+            <div class="form-group">
+                <label for="ambulanceBox">
+				<i class="far fa-user"></i>Ambulance
+			    </label>
+                <input type="checkbox" class="form-control items" id="ambulanceBox" name="ambulanceBox" value="ambulance">
+            </div>
+            <div class="form-group">
+                <label for="therapyBox">
+				<i class="far fa-user"></i>Therapy
+			    </label>
+                <input type="checkbox" class="form-control items" id="therapyBox" name="therapyBox" value="therapy">
+            </div><br>
+            <div class="form-group">
+                <label id="strip">
+				<i class="far fa-user"></i>Platform
+			    </label>
+            </div><br>
+            <div class="form-group">
+                <input type="radio" id="facebook" name="platform" value="facebook" class="form-control items">
+                <label for="facebook">Facebook</label>
+            </div>
+            <div class="form-group">
+                <input type="radio" id="twitter" name="platform" value="twitter" class="form-control items">
+                <label for="twitter">Twitter</label>
+            </div>
+            <div class="form-group">
+                <input type="radio" id="Instagram" name="platform" value="Instagram" class="form-control items">
+                <label for="Instagram">Instagram</label>
+            </div><br>
+            <button type="submit" class="btn btn-primary">Generate Info</button>
+        </form>
+        <div class="social-media">
+
+            <div class="social-icons">
+                <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
+                <a href="#"><i class="icon-social-google" title="Google"></i></a>
+                <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <!--<script src="assets/js/script.js"></script> -->
+</body>
+</html>
