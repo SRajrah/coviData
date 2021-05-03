@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template, redirect
+# from controller.twitter import getSearchOptions
 majorCities = []
+
 def generateString():
     reqItemString = ""
     print(request.method)
@@ -45,43 +47,56 @@ def generateString():
         # therapy = "therapyBox"
         if cityName != '':
             requiredItems.append(cityName)
-        if beds == 'beds':
-            requiredItems.append(beds)
-        if icu == 'icu':
-            requiredItems.append(icu)
-        if oxygen == 'oxygen':
-            requiredItems.append(oxygen)
-        if ventilator == 'ventilator':
-            requiredItems.append(ventilator)
-        if tests == 'tests':
-            requiredItems.append(tests)
-        if fabiflu == 'fabiflu':
-            requiredItems.append(fabiflu)
-        if remdesivir == 'remdesivir':
-            requiredItems.append(remdesivir)
-        if favipiravir == 'favipiravir':
-            requiredItems.append(favipiravir)
-        if tocilizumab == 'tocilizumab':
-            requiredItems.append(tocilizumab)
-        if plasma == 'plasma':
-            requiredItems.append(plasma)
-        if food == 'food':
-            requiredItems.append(food)
-        if ambulance == 'ambulance':
-            requiredItems.append(ambulance)
-        if therapy == 'therapy':
-            requiredItems.append(therapy)
+            if beds == 'beds':
+                requiredItems.append(beds)
+            if icu == 'icu':
+                requiredItems.append(icu)
+            if oxygen == 'oxygen':
+                requiredItems.append(oxygen)
+            if ventilator == 'ventilator':
+                requiredItems.append(ventilator)
+            if tests == 'tests':
+                requiredItems.append(tests)
+            if fabiflu == 'fabiflu':
+                requiredItems.append(fabiflu)
+            if remdesivir == 'remdesivir':
+                requiredItems.append(remdesivir)
+            if favipiravir == 'favipiravir':
+                requiredItems.append(favipiravir)
+            if tocilizumab == 'tocilizumab':
+                requiredItems.append(tocilizumab)
+            if plasma == 'plasma':
+                requiredItems.append(plasma)
+            if food == 'food':
+                requiredItems.append(food)
+            if ambulance == 'ambulance':
+                requiredItems.append(ambulance)
+            if therapy == 'therapy':
+                requiredItems.append(therapy)
+        else:
+            message="Please add a city name!"
+            return render_template("newindex.html",message=message)
 
+        if len(requiredItems)==1:
+            message="Please select atleast one resource!"
+            return render_template("newindex.html", message=message)
         print(requiredItems)
         if len(requiredItems) != 0:
             reqItemString = "%20".join(requiredItems)
 
         if platform == 'facebook':
             redirectUrl = "https://www.facebook.com"
-        if platform == 'facebook':
+        elif platform == 'instagram':
             redirectUrl = "https://www.facebook.com"
-        if platform == 'twitter':
+        elif platform == 'twitter':
+            platformSelection = 'twitter'
+            searchOptions= ["All tweets","Only tweets containing 'verified'","Only tweets containing 'unverified'"]
+            return render_template("newindex.html", name=platformSelection, searchOptions=searchOptions)
             redirectUrl = "https://www.twitter.com"
+            # getSearchOptions(platformSelection)
+        else:
+            message = "Please select the platform!"
+            return render_template("newindex.html",message=message)
         print(reqItemString)
 
         if len(requiredItems) == 0:
