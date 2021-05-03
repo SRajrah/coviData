@@ -17,3 +17,21 @@
     <button type="submit">Take me to resources</button>
     </form>
 </html>
+<select name="searchOption" method="GET" action="/"></select>
+
+
+<select name="searchOptions" id="searchOptions" multiple>
+  {% if searchOptions %}
+    {% for searchOption in searchOptions %}
+        <option value="{{searchOption}}">{{searchOption}}</option>"
+    {% endfor %}
+  {% endif %}
+</select>
+<label for="cars">Choose a car:</label>
+
+<select name="cars" id="cars" multiple>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>

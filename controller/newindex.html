@@ -16,6 +16,9 @@
             <div class="form-icon">
                 <span><i class="icon icon-user"></i></span>
             </div>
+            {% if message %}
+                    <p>{{message}}</p>
+            {% endif %}
             <div class="form-group">
                 <input type="text" class="form-control item" id="cityName" placeholder="City" name="cityName">
             </div>
@@ -103,11 +106,35 @@
 			    </label>
                 <input type="checkbox" class="form-control items" id="therapyBox" name="therapyBox" value="therapy">
             </div><br>
+
+            <div class="form-group">
+                <label id="strip">
+				<i class="far fa-user"></i>Requirement
+			    </label>
+            </div><br>
+
+            <div class="form-group">
+                <input type="radio" id="need" name="requirement" value="need" class="form-control items">
+                <label for="need">Need</label>
+            </div><div class="form-group">
+                <input type="radio" id="provide" name="requirement" value="provide" class="form-control items">
+                <label for="provide">Provide</label>
+            </div>
+            <br>
             <div class="form-group">
                 <label id="strip">
 				<i class="far fa-user"></i>Platform
 			    </label>
             </div><br>
+            <div>
+                <select id="platform">
+                    <option id="facebook" name="platform" value="facebook" class="form-control items">Facebook</option>
+                    <option id="twitter" name="platform" value="twitter" class="form-control items">Twitter</option>
+                    <option id="Instagram" name="platform" value="Instagram" class="form-control items">Instagram</option>
+                    <option value="" selected>Select an option</option>
+                </select>
+            </div>
+<!-- 
             <div class="form-group">
                 <input type="radio" id="facebook" name="platform" value="facebook" class="form-control items">
                 <label for="facebook">Facebook</label>
@@ -119,7 +146,20 @@
             <div class="form-group">
                 <input type="radio" id="Instagram" name="platform" value="Instagram" class="form-control items">
                 <label for="Instagram">Instagram</label>
-            </div><br>
+            </div><br> -->
+            <!-- {% if name %}
+                <div>
+                    {% if searchOptions %}
+                        <select name="searchOptions" id="searchOptions" method='GET'>
+                          {% for searchOption in searchOptions %}
+                              <option value="{{searchOption}}">{{searchOption}}</option>"
+                          {% endfor %}
+                        </select>
+                    {% endif %}            
+                </div><br>
+            {% endif %} -->
+            <br>
+            <br>
             <button type="submit" class="btn btn-primary">Generate Info</button>
         </form>
         <div class="social-media">
