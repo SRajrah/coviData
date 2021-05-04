@@ -18,16 +18,16 @@ document.getElementById('platform').onchange = function() {
   	
     mycontainer = document.getElementById('container');
     while (mycontainer.firstChild) {
-    mycontainer.removeChild(mycontainer.lastChild);
+        mycontainer.removeChild(mycontainer.lastChild);
   	}
      
-     if(document.getElementById('verified')){
-    	container.removeChild(verified);
- 		  container.removeChild(unverified);
-      container.removeChild(label2);
- 		  container.removeChild(label3);
-      
-    }
+//     if(document.getElementById('verified')){
+//    	container.removeChild(verified);
+// 		  container.removeChild(unverified);
+//      container.removeChild(label2);
+// 		  container.removeChild(label3);
+//
+//    }
   
     var checkbox1 = document.createElement('input');
     checkbox1.type = 'checkbox';
@@ -42,7 +42,6 @@ document.getElementById('platform').onchange = function() {
     var checkbox2 = document.createElement('input');
     checkbox2.type = 'checkbox';
     checkbox2.id = 'unverified';
-    
     checkbox2.name = 'unverified';
     checkbox2.value = 'unverified';
     
@@ -50,11 +49,10 @@ document.getElementById('platform').onchange = function() {
     label3.htmlFor = 'unverified';
     label3.appendChild(document.createTextNode('Unverified'));
     
-    container.appendChild(checkbox2);
-    container.appendChild(label3);
-    container.append(br);
     container.appendChild(checkbox1);
-  	container.appendChild(label2);
+    container.appendChild(label2);
+    container.appendChild(checkbox2);
+  	container.appendChild(label3);
        
   }
  else if(document.getElementById('platform').value == "instagram"){
