@@ -3,15 +3,11 @@ majorCities = []
 
 def generateString():
     reqItemString = ""
-    print(request.method)
-    requiredItems = []
-    notRequiredItems = []
-    if request.method == "POST":
-       # getting input with name = fname in HTML form
-       #cityName = request.form.get("cityName")
-       # getting input with name = lname in HTML form
-       #last_name = request.form.get("Beds")
 
+    requiredItems = []
+
+    if request.method == "POST":
+        #get form data into variables
         cityName = request.form.get("cityName")
         platform = request.form.get("platform")
         requirement = request.form.get("requirement")
@@ -28,27 +24,13 @@ def generateString():
         food = request.form.get("foodBox")
         ambulance = request.form.get("ambulanceBox")
         therapy = request.form.get("therapyBox")
-        if platform=='twitter':
+
+        if platform =='twitter':
             twitterUnverifiedFilter = request.form.get("unverified")
             twitterVerifiedFilter = request.form.get("verified")
 
-        print(cityName,requirement, beds, icu, oxygen, ventilator, tests, fabiflu, remdesivir, favipiravir, tocilizumab, plasma, food, ambulance, therapy, platform, twitterNeedFilter,twitterRequireFilter)
-        #return myprints()
-        # cityName = "cityName"
-        # platform = "platform"
-        # beds = "bedBox"
-        # icu = "icuBox"
-        # oxygen = "oxygenBox"
-        # ventilator = "ventilatorBox"
-        # tests = "testsBox"
-        # fabiflu = "fabifluBox"
-        # remdesivir = "remdesivirBox"
-        # favipiravir = "favipiravBox"
-        # tocilizumab = "tocilizumBox"
-        # plasma = "plasmaBox"
-        # food = "foodBox"
-        # ambulance = "ambulanceBox"
-        # therapy = "therapyBox"
+        print(cityName, requirement, beds, icu, oxygen, ventilator, tests, fabiflu, remdesivir, favipiravir, tocilizumab, plasma, food, ambulance, therapy, platform)
+
         if cityName != 'None':
             if requirement!= 'None':
                 if beds == 'beds':
@@ -88,9 +70,7 @@ def generateString():
             message="Please select atleast one resource!"
             return render_template("newindex.html", message=message)
 
-        # print(requiredItems)
-        # if len(requiredItems) != 0:
-        #     reqItemString = "%20".join(requiredItems)
+
         
         if platform == 'facebook':
             if requirement=='need':
@@ -98,19 +78,36 @@ def generateString():
             redirectUrl = "https://www.facebook.com/search/top?q="+stringToSearch
             return redirect(redirectUrl)
         elif platform == 'instagram':
-            redirectUrl = "https://www.facebook.com"
+            redirectUrl = "https://www.instagram.com"
         elif platform == 'twitter':
-            platformSelection = 'twitter'
-            if requirement=='need':
-                if twitterUnverifiedFilter:
-                    stringToSearch = twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs) "+'-"not verfied" '+'-"unverified"'
+
+            if requirement == 'need':
+                if twitterUnverifiedFilter != 'None' and twitterVerifiedFilter != 'None':
+                    stringToSearch = twitterVerifiedFilter+" "+twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
+
+                elif twitterUnverifiedFilter != 'None' and twitterVerifiedFilter == 'None':
+                    stringToSearch = twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
+
+                elif twitterUnverifiedFilter == 'None' and twitterVerifiedFilter != 'None':
+                    stringToSearch = twitterVerifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
                 else:
-                    stringToSearch = twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs) "+'-"not verfied" '+'-"unverified"'
+                    stringToSearch = cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
 
             else:
-                stringToSearch = twitterRequireFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"not available" '+'-"not present"'
-# /search?q=verified%20Shimla%20(bed%20OR%20beds%20OR%20icu%20OR%20oxygen%20OR%20ventilator%20OR%20ventilators%20OR%20test%20OR%20tests%20OR%20testing)%20-"not%20verified"%20-"unverified"&f=live          
-            searchOptions= ["All tweets","Only tweets containing 'verified'","Only tweets containing 'unverified'"]
+
+                if twitterUnverifiedFilter != 'None' and twitterVerifiedFilter != 'None':
+                    stringToSearch = twitterVerifiedFilter+" "+twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs OR patient OR patients) "+'-"available" '+'-"present"'
+
+                elif twitterUnverifiedFilter != 'None' and twitterVerifiedFilter == 'None':
+                    stringToSearch = twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs OR patient OR patients) "+'-"available" '+'-"present"'
+
+                elif twitterUnverifiedFilter == 'None' and twitterVerifiedFilter != 'None':
+                    stringToSearch = twitterVerifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs OR patient OR patients) "+'-"available" '+'-"present"'
+                else:
+                    stringToSearch = cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs OR patient OR patients) "+'-"available" '+'-"present"'
+
+
+            # searchOptions= ["All tweets","Only tweets containing 'verified'","Only tweets containing 'unverified'"]
             # return render_template("newindex.html", name=platformSelection, searchOptions=searchOptions)
             redirectUrl = "https://www.twitter.com/search?q="+stringToSearch
             return redirect(redirectUrl)
@@ -124,8 +121,7 @@ def generateString():
             return render_template("newindex.html")
         else:
             return reqItemString
-       #return redirect()
-        #Your name is "+first_name + last_name
+
     return render_template("newindex.html")
 
 def myprints():
