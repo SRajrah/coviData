@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template, redirect
-# from controller.twitter import getSearchOptions
 majorCities = []
 
 def generateString():
@@ -15,6 +14,7 @@ def generateString():
 
         cityName = request.form.get("cityName")
         platform = request.form.get("platform")
+        requirement = request.form.get("requirement")
         beds = request.form.get("bedBox")
         icu = request.form.get("icuBox")
         oxygen = request.form.get("oxygenBox")
@@ -28,7 +28,11 @@ def generateString():
         food = request.form.get("foodBox")
         ambulance = request.form.get("ambulanceBox")
         therapy = request.form.get("therapyBox")
-        print(cityName, beds, icu, oxygen, ventilator, tests, fabiflu, remdesivir, favipiravir, tocilizumab, plasma, food, ambulance, therapy, platform)
+        if platform=='twitter':
+            twitterUnverifiedFilter = request.form.get("unverified")
+            twitterVerifiedFilter = request.form.get("verified")
+
+        print(cityName,requirement, beds, icu, oxygen, ventilator, tests, fabiflu, remdesivir, favipiravir, tocilizumab, plasma, food, ambulance, therapy, platform, twitterNeedFilter,twitterRequireFilter)
         #return myprints()
         # cityName = "cityName"
         # platform = "platform"
@@ -45,54 +49,71 @@ def generateString():
         # food = "foodBox"
         # ambulance = "ambulanceBox"
         # therapy = "therapyBox"
-        if cityName != '':
-            requiredItems.append(cityName)
-            if beds == 'beds':
-                requiredItems.append(beds)
-            if icu == 'icu':
-                requiredItems.append(icu)
-            if oxygen == 'oxygen':
-                requiredItems.append(oxygen)
-            if ventilator == 'ventilator':
-                requiredItems.append(ventilator)
-            if tests == 'tests':
-                requiredItems.append(tests)
-            if fabiflu == 'fabiflu':
-                requiredItems.append(fabiflu)
-            if remdesivir == 'remdesivir':
-                requiredItems.append(remdesivir)
-            if favipiravir == 'favipiravir':
-                requiredItems.append(favipiravir)
-            if tocilizumab == 'tocilizumab':
-                requiredItems.append(tocilizumab)
-            if plasma == 'plasma':
-                requiredItems.append(plasma)
-            if food == 'food':
-                requiredItems.append(food)
-            if ambulance == 'ambulance':
-                requiredItems.append(ambulance)
-            if therapy == 'therapy':
-                requiredItems.append(therapy)
+        if cityName != 'None':
+            if requirement!= 'None':
+                if beds == 'beds':
+                    requiredItems.append(beds)
+                if icu == 'icu':
+                    requiredItems.append(icu)
+                if oxygen == 'oxygen':
+                    requiredItems.append(oxygen)
+                if ventilator == 'ventilator':
+                    requiredItems.append(ventilator)
+                if tests == 'tests':
+                    requiredItems.append(tests)
+                if fabiflu == 'fabiflu':
+                    requiredItems.append(fabiflu)
+                if remdesivir == 'remdesivir':
+                    requiredItems.append(remdesivir)
+                if favipiravir == 'favipiravir':
+                    requiredItems.append(favipiravir)
+                if tocilizumab == 'tocilizumab':
+                    requiredItems.append(tocilizumab)
+                if plasma == 'plasma':
+                    requiredItems.append(plasma)
+                if food == 'food':
+                    requiredItems.append(food)
+                if ambulance == 'ambulance':
+                    requiredItems.append(ambulance)
+                if therapy == 'therapy':
+                    requiredItems.append(therapy)
+            else:
+                message="Please select your requirement- You can find or provide resources!"
+                return render_template("newindex.html",message=message)
         else:
             message="Please add a city name!"
             return render_template("newindex.html",message=message)
-
-        if len(requiredItems)==1:
+        print(len(requiredItems))
+        if len(requiredItems)==2:
             message="Please select atleast one resource!"
             return render_template("newindex.html", message=message)
-        print(requiredItems)
-        if len(requiredItems) != 0:
-            reqItemString = "%20".join(requiredItems)
 
+        # print(requiredItems)
+        # if len(requiredItems) != 0:
+        #     reqItemString = "%20".join(requiredItems)
+        
         if platform == 'facebook':
-            redirectUrl = "https://www.facebook.com"
+            if requirement=='need':
+                stringToSearch = cityName+" "+(" ").join(requiredItems)+" need"
+            redirectUrl = "https://www.facebook.com/search/top?q="+stringToSearch
+            return redirect(redirectUrl)
         elif platform == 'instagram':
             redirectUrl = "https://www.facebook.com"
         elif platform == 'twitter':
             platformSelection = 'twitter'
+            if requirement=='need':
+                if twitterUnverifiedFilter:
+                    stringToSearch = twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs) "+'-"not verfied" '+'-"unverified"'
+                else:
+                    stringToSearch = twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs) "+'-"not verfied" '+'-"unverified"'
+
+            else:
+                stringToSearch = twitterRequireFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"not available" '+'-"not present"'
+# /search?q=verified%20Shimla%20(bed%20OR%20beds%20OR%20icu%20OR%20oxygen%20OR%20ventilator%20OR%20ventilators%20OR%20test%20OR%20tests%20OR%20testing)%20-"not%20verified"%20-"unverified"&f=live          
             searchOptions= ["All tweets","Only tweets containing 'verified'","Only tweets containing 'unverified'"]
-            return render_template("newindex.html", name=platformSelection, searchOptions=searchOptions)
-            redirectUrl = "https://www.twitter.com"
+            # return render_template("newindex.html", name=platformSelection, searchOptions=searchOptions)
+            redirectUrl = "https://www.twitter.com/search?q="+stringToSearch
+            return redirect(redirectUrl)
             # getSearchOptions(platformSelection)
         else:
             message = "Please select the platform!"
