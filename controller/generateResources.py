@@ -25,14 +25,15 @@ def generateString():
         ambulance = request.form.get("ambulanceBox")
         therapy = request.form.get("therapyBox")
 
+        #get unverified and verified values in variables
         if platform =='twitter':
             twitterUnverifiedFilter = request.form.get("unverified")
             twitterVerifiedFilter = request.form.get("verified")
 
         print(cityName, requirement, beds, icu, oxygen, ventilator, tests, fabiflu, remdesivir, favipiravir, tocilizumab, plasma, food, ambulance, therapy, platform)
 
-        if cityName != 'None':
-            if requirement!= 'None':
+        if cityName is not None:
+            if requirement is not None:
                 if beds == 'beds':
                     requiredItems.append(beds)
                 if icu == 'icu':
@@ -60,14 +61,14 @@ def generateString():
                 if therapy == 'therapy':
                     requiredItems.append(therapy)
             else:
-                message="Please select your requirement- You can find or provide resources!"
-                return render_template("newindex.html",message=message)
+                message = "Please select your requirement- You can find or provide resources!"
+                return render_template("newindex.html", message=message)
         else:
-            message="Please add a city name!"
-            return render_template("newindex.html",message=message)
+            message = "Please add a city name!"
+            return render_template("newindex.html", message=message)
         print(len(requiredItems))
-        if len(requiredItems)==2:
-            message="Please select atleast one resource!"
+        if len(requiredItems) == 0:
+            message = "Please select atleast one resource!"
             return render_template("newindex.html", message=message)
 
 
@@ -82,26 +83,28 @@ def generateString():
         elif platform == 'twitter':
 
             if requirement == 'need':
-                if twitterUnverifiedFilter != 'None' and twitterVerifiedFilter != 'None':
+                print(twitterUnverifiedFilter)
+                print(twitterVerifiedFilter)
+                if twitterUnverifiedFilter is not None and twitterVerifiedFilter is not None:
                     stringToSearch = twitterVerifiedFilter+" "+twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
 
-                elif twitterUnverifiedFilter != 'None' and twitterVerifiedFilter == 'None':
+                elif twitterUnverifiedFilter is not None and twitterVerifiedFilter is None:
                     stringToSearch = twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
 
-                elif twitterUnverifiedFilter == 'None' and twitterVerifiedFilter != 'None':
+                elif twitterUnverifiedFilter is None and twitterVerifiedFilter is not None:
                     stringToSearch = twitterVerifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
                 else:
                     stringToSearch = cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
 
             else:
 
-                if twitterUnverifiedFilter != 'None' and twitterVerifiedFilter != 'None':
+                if twitterUnverifiedFilter is not None and twitterVerifiedFilter is not None:
                     stringToSearch = twitterVerifiedFilter+" "+twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs OR patient OR patients) "+'-"available" '+'-"present"'
 
-                elif twitterUnverifiedFilter != 'None' and twitterVerifiedFilter == 'None':
+                elif twitterUnverifiedFilter is not None and twitterVerifiedFilter is None:
                     stringToSearch = twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs OR patient OR patients) "+'-"available" '+'-"present"'
 
-                elif twitterUnverifiedFilter == 'None' and twitterVerifiedFilter != 'None':
+                elif twitterUnverifiedFilter is None and twitterVerifiedFilter is not None:
                     stringToSearch = twitterVerifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs OR patient OR patients) "+'-"available" '+'-"present"'
                 else:
                     stringToSearch = cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs OR patient OR patients) "+'-"available" '+'-"present"'
