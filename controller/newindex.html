@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Easiest Way to Add Input Masks to Your Forms</title>
+    <title>Covid19 Social Resources</title>
     <link rel="stylesheet" type= "text/css"  href="{{ url_for('static', filename='styles/newstyle.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
                     <p>{{message}}</p>
             {% endif %}
             <div class="form-group">
-                <input type="text" class="form-control item" id="cityName" placeholder="City" name="cityName">
+                <input type="text" class="form-control item" id="cityName" placeholder="City" name="cityName"  value="{{request.form['cityName']}}" required>
             </div>
             <br>
             <div class="form-group">
@@ -30,7 +30,7 @@
             </div><br>
 
             <div class="form-group">
-                <input type="radio" id="need" name="requirement" value="need" class="form-control items" required>
+                <input type="radio" id="need" name="requirement" value="need" class="form-control items"  required>
                 <label for="need">Need</label>
             </div><div class="form-group">
                 <input type="radio" id="provide" name="requirement" value="provide" class="form-control items">
