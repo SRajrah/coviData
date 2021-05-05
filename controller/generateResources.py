@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, redirect
+import webbrowser
 majorCities = []
 
 def generateString():
@@ -77,11 +78,8 @@ def generateString():
             if requirement=='need':
                 stringToSearch = cityName+" "+(" ").join(requiredItems)+" need"
             redirectUrl = "https://www.facebook.com/search/top?q="+stringToSearch
-            return redirect(redirectUrl)
-        elif platform == 'instagram':
-            redirectUrl = "https://www.instagram.com"
+            return webbrowser.open_new_tab(redirectUrl)
         elif platform == 'twitter':
-
             if requirement == 'need':
                 print(twitterUnverifiedFilter)
                 print(twitterVerifiedFilter)
@@ -113,7 +111,7 @@ def generateString():
             # searchOptions= ["All tweets","Only tweets containing 'verified'","Only tweets containing 'unverified'"]
             # return render_template("newindex.html", name=platformSelection, searchOptions=searchOptions)
             redirectUrl = "https://www.twitter.com/search?q="+stringToSearch
-            return redirect(redirectUrl)
+            return webbrowser.open_new_tab(redirectUrl)
             # getSearchOptions(platformSelection)
         else:
             message = "Please select the platform!"
