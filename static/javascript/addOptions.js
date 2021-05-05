@@ -1,4 +1,5 @@
 document.getElementById('platform').onchange = function() {
+    document.getElementById('submitButton').disabled = false;
     var br = document.createElement('br');
     mycontainer = document.getElementById('container');
 
@@ -13,7 +14,7 @@ document.getElementById('platform').onchange = function() {
     label1.id = 'label1'
   	label1.appendChild(document.createTextNode('Please make sure you are logged in to facebook using brower/app'));
    	mycontainer.appendChild(label1);
-  	mycontainer.appendChild(br);
+  	mycontainer.append(document.createElement('br'));
 
   }
 	else if(document.getElementById('platform').value == "twitter"){
@@ -73,11 +74,11 @@ document.getElementById('platform').onchange = function() {
         label4.id = "instaLine"
         label4.appendChild(document.createTextNode('We will generate a few hashtags based on your selected resources'));
         mycontainer.appendChild(label4);
-        mycontainer.appendChild(br);
+//        mycontainer.append(document.createElement('br'));
 
         //======================================================================BED HASH==========================
             if (document.getElementById('bedBox').checked == true){
-
+                var br1 = document.createElement('br');
                 var bedHash = "#" + document.getElementById('cityName').value + document.getElementById('bedBox').value;
                 var labelBed = document.createElement('a');
                 labelBed.id = "bedLabelId"
@@ -86,8 +87,8 @@ document.getElementById('platform').onchange = function() {
                 labelBed.target = "_blank";
                 labelBed.appendChild(document.createTextNode(bedHash));
                 mycontainer.appendChild(labelBed);
-                mycontainer.appendChild(br);
-
+                mycontainer.appendChild(br1);
+                
             }
 
             document.getElementById('bedBox').onchange = function() {
@@ -106,7 +107,7 @@ document.getElementById('platform').onchange = function() {
                         labelBed.target = "_blank";
                         labelBed.appendChild(document.createTextNode(bedHash));
                         mycontainer.appendChild(labelBed);
-                        mycontainer.appendChild(br);
+                        mycontainer.append(document.createElement('br'));
 
                     }
                 }
@@ -122,7 +123,7 @@ document.getElementById('platform').onchange = function() {
                labelIcu.target = "_blank";
                labelIcu.appendChild(document.createTextNode(icuHash));
                mycontainer.appendChild(labelIcu);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -142,7 +143,7 @@ document.getElementById('platform').onchange = function() {
                     labelIcu.target = "_blank";
                     labelIcu.appendChild(document.createTextNode(icuHash));
                     mycontainer.appendChild(labelIcu);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -160,7 +161,7 @@ document.getElementById('platform').onchange = function() {
                labelOxygen.target = "_blank";
                labelOxygen.appendChild(document.createTextNode(oxygenHash));
                mycontainer.appendChild(labelOxygen);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -180,7 +181,7 @@ document.getElementById('platform').onchange = function() {
                     labelOxygen.target = "_blank";
                     labelOxygen.appendChild(document.createTextNode(oxygenHash));
                     mycontainer.appendChild(labelOxygen);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -197,7 +198,7 @@ document.getElementById('platform').onchange = function() {
                labelVentilator.target = "_blank";
                labelVentilator.appendChild(document.createTextNode(ventilatorHash));
                mycontainer.appendChild(labelVentilator);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -217,7 +218,7 @@ document.getElementById('platform').onchange = function() {
                     labelVentilator.target = "_blank";
                     labelVentilator.appendChild(document.createTextNode(ventilatorHash));
                     mycontainer.appendChild(labelVentilator);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -234,7 +235,7 @@ document.getElementById('platform').onchange = function() {
                labelTest.target = "_blank";
                labelTest.appendChild(document.createTextNode(testHash));
                mycontainer.appendChild(labelTest);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -254,7 +255,7 @@ document.getElementById('platform').onchange = function() {
                     labelTest.target = "_blank";
                     labelTest.appendChild(document.createTextNode(testHash));
                     mycontainer.appendChild(labelTest);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -265,14 +266,14 @@ document.getElementById('platform').onchange = function() {
             if (document.getElementById('fabifluBox').checked == true){
 
                var fabifluHash = "#" + document.getElementById('cityName').value + document.getElementById('fabifluBox').value;
-               var fabifluHash = document.createElement('a');
-               labelFabiflu.id = "fabifluId"
+               var labelFabiflu = document.createElement('a');
+               labelFabiflu.id = "fabifluId";
                labelFabiflu.htmlFor = 'instagram';
                labelFabiflu.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('fabifluBox').value
                labelFabiflu.target = "_blank";
                labelFabiflu.appendChild(document.createTextNode(fabifluHash));
                mycontainer.appendChild(labelFabiflu);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -292,7 +293,7 @@ document.getElementById('platform').onchange = function() {
                     labelFabiflu.target = "_blank";
                     labelFabiflu.appendChild(document.createTextNode(fabifluHash));
                     mycontainer.appendChild(labelFabiflu);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -312,7 +313,7 @@ document.getElementById('platform').onchange = function() {
                labelRemdesivir.target = "_blank";
                labelRemdesivir.appendChild(document.createTextNode(remdesivirHash));
                mycontainer.appendChild(labelRemdesivir);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -332,7 +333,7 @@ document.getElementById('platform').onchange = function() {
                     labelRemdesivir.target = "_blank";
                     labelRemdesivir.appendChild(document.createTextNode(remdesivirHash));
                     mycontainer.appendChild(labelRemdesivir);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -351,7 +352,7 @@ document.getElementById('platform').onchange = function() {
                labelFavipiravir.target = "_blank";
                labelFavipiravir.appendChild(document.createTextNode(favipiravirHash));
                mycontainer.appendChild(labelFavipiravir);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -371,7 +372,7 @@ document.getElementById('platform').onchange = function() {
                     labelFavipiravir.target = "_blank";
                     labelFavipiravir.appendChild(document.createTextNode(favipiravirHash));
                     mycontainer.appendChild(labelFavipiravir);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -390,7 +391,7 @@ document.getElementById('platform').onchange = function() {
                labelTocilizumab.target = "_blank";
                labelTocilizumab.appendChild(document.createTextNode(tocilizumabHash));
                mycontainer.appendChild(labelTocilizumab);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -410,7 +411,7 @@ document.getElementById('platform').onchange = function() {
                     labelTocilizumab.target = "_blank";
                     labelTocilizumab.appendChild(document.createTextNode(tocilizumabHash));
                     mycontainer.appendChild(labelTocilizumab);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -428,7 +429,7 @@ document.getElementById('platform').onchange = function() {
                labelPlasma.target = "_blank";
                labelPlasma.appendChild(document.createTextNode(plasmaHash));
                mycontainer.appendChild(labelPlasma);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -448,7 +449,7 @@ document.getElementById('platform').onchange = function() {
                     labelPlasma.target = "_blank";
                     labelPlasma.appendChild(document.createTextNode(plasmaHash));
                     mycontainer.appendChild(labelPlasma);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -466,7 +467,7 @@ document.getElementById('platform').onchange = function() {
                labelFood.target = "_blank";
                labelFood.appendChild(document.createTextNode(foodHash));
                mycontainer.appendChild(labelFood);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -486,7 +487,7 @@ document.getElementById('platform').onchange = function() {
                     labelFood.target = "_blank";
                     labelFood.appendChild(document.createTextNode(foodHash));
                     mycontainer.appendChild(labelFood);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -505,7 +506,7 @@ document.getElementById('platform').onchange = function() {
                labelAmbulance.target = "_blank";
                labelAmbulance.appendChild(document.createTextNode(ambulanceHash));
                mycontainer.appendChild(labelAmbulance);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -525,7 +526,7 @@ document.getElementById('platform').onchange = function() {
                     labelAmbulance.target = "_blank";
                     labelAmbulance.appendChild(document.createTextNode(ambulanceHash));
                     mycontainer.appendChild(labelAmbulance);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
@@ -544,7 +545,7 @@ document.getElementById('platform').onchange = function() {
                labelTherapy.target = "_blank";
                labelTherapy.appendChild(document.createTextNode(therapyHash));
                mycontainer.appendChild(labelTherapy);
-               mycontainer.appendChild(br);
+               mycontainer.append(document.createElement('br'));
 
            }
 
@@ -564,7 +565,7 @@ document.getElementById('platform').onchange = function() {
                     labelTherapy.target = "_blank";
                     labelTherapy.appendChild(document.createTextNode(therapyHash));
                     mycontainer.appendChild(labelTherapy);
-                    mycontainer.appendChild(br);
+                    mycontainer.append(document.createElement('br'));
 
                 }
 
