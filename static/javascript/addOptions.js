@@ -1,4 +1,6 @@
 document.getElementById('platform').onchange = function() {
+    var city =document.getElementById('cityName').value;
+    var newCity = city.replace(/\s+/g, '');
     document.getElementById('submitButton').disabled = false;
     var br = document.createElement('br');
     mycontainer = document.getElementById('container');
@@ -79,11 +81,11 @@ document.getElementById('platform').onchange = function() {
         //======================================================================BED HASH==========================
             if (document.getElementById('bedBox').checked == true){
                 var br1 = document.createElement('br');
-                var bedHash = "#" + document.getElementById('cityName').value + document.getElementById('bedBox').value;
+                var bedHash = "#" + newCity + document.getElementById('bedBox').value;
                 var labelBed = document.createElement('a');
                 labelBed.id = "bedLabelId"
                 labelBed.htmlFor = 'instagram';
-                labelBed.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('bedBox').value
+                labelBed.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('bedBox').value
                 labelBed.target = "_blank";
                 labelBed.appendChild(document.createTextNode(bedHash));
                 mycontainer.appendChild(labelBed);
@@ -99,11 +101,11 @@ document.getElementById('platform').onchange = function() {
                     }
                     else{
                         var br = document.createElement('br');
-                        var bedHash = "#" + document.getElementById('cityName').value + "covid" + document.getElementById('bedBox').value;
+                        var bedHash = "#" + newCity + "covid" + document.getElementById('bedBox').value;
                         var labelBed = document.createElement('a');
                         labelBed.id = "bedLabelId"
                         labelBed.htmlFor = 'instagram';
-                        labelBed.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('bedBox').value
+                        labelBed.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('bedBox').value
                         labelBed.target = "_blank";
                         labelBed.appendChild(document.createTextNode(bedHash));
                         mycontainer.appendChild(labelBed);
@@ -115,11 +117,11 @@ document.getElementById('platform').onchange = function() {
     //=======================================ICU HASH==================================================================
            if (document.getElementById('icuBox').checked == true){
 
-               var icuHash = "#" + document.getElementById('cityName').value + document.getElementById('icuBox').value;
+               var icuHash = "#" + newCity + document.getElementById('icuBox').value;
                var labelIcu = document.createElement('a');
                labelIcu.id = "icuLabelId"
                labelIcu.htmlFor = 'instagram';
-               labelIcu.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('icuBox').value
+               labelIcu.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('icuBox').value
                labelIcu.target = "_blank";
                labelIcu.appendChild(document.createTextNode(icuHash));
                mycontainer.appendChild(labelIcu);
@@ -135,11 +137,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('icuLabelId'));
                 }
                 else{
-                    var icuHash = "#" + document.getElementById('cityName').value + document.getElementById('icuBox').value;
+                    var icuHash = "#" + newCity + document.getElementById('icuBox').value;
                     var labelIcu = document.createElement('a');
                     labelIcu.id = "icuLabelId"
                     labelIcu.htmlFor = 'instagram';
-                    labelIcu.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('icuBox').value
+                    labelIcu.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('icuBox').value
                     labelIcu.target = "_blank";
                     labelIcu.appendChild(document.createTextNode(icuHash));
                     mycontainer.appendChild(labelIcu);
@@ -153,11 +155,11 @@ document.getElementById('platform').onchange = function() {
 
 //  ====================================================================================================================
             if (document.getElementById('oxygenBox').checked == true){
-               var oxygenHash = "#" + document.getElementById('cityName').value + document.getElementById('oxygenBox').value;
+               var oxygenHash = "#" + newCity + document.getElementById('oxygenBox').value;
                var labelOxygen = document.createElement('a');
                labelOxygen.id = "oxygenLabelId"
                labelOxygen.htmlFor = 'instagram';
-               labelOxygen.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('oxygenBox').value
+               labelOxygen.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('oxygenBox').value
                labelOxygen.target = "_blank";
                labelOxygen.appendChild(document.createTextNode(oxygenHash));
                mycontainer.appendChild(labelOxygen);
@@ -173,11 +175,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('oxygenLabelId'));
                 }
                 else{
-                    var oxygenHash = "#" + document.getElementById('cityName').value + document.getElementById('oxygenBox').value;
+                    var oxygenHash = "#" + newCity + document.getElementById('oxygenBox').value;
                     var labelOxygen = document.createElement('a');
                     labelOxygen.id = "oxygenLabelId"
                     labelOxygen.htmlFor = 'instagram';
-                    labelOxygen.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('oxygenBox').value
+                    labelOxygen.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('oxygenBox').value
                     labelOxygen.target = "_blank";
                     labelOxygen.appendChild(document.createTextNode(oxygenHash));
                     mycontainer.appendChild(labelOxygen);
@@ -190,11 +192,11 @@ document.getElementById('platform').onchange = function() {
 //  =================================================================================================================
             if (document.getElementById('ventilatorBox').checked == true){
 
-               var ventilatorHash = "#" + document.getElementById('cityName').value + document.getElementById('ventilatorBox').value;
+               var ventilatorHash = "#" + newCity + document.getElementById('ventilatorBox').value;
                var labelVentilator = document.createElement('a');
                labelVentilator.id = "ventilatorLabelId"
                labelVentilator.htmlFor = 'instagram';
-               labelVentilator.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('ventilatorBox').value
+               labelVentilator.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('ventilatorBox').value
                labelVentilator.target = "_blank";
                labelVentilator.appendChild(document.createTextNode(ventilatorHash));
                mycontainer.appendChild(labelVentilator);
@@ -210,11 +212,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('ventilatorLabelId'));
                 }
                 else{
-                    var ventilatorHash = "#" + document.getElementById('cityName').value + document.getElementById('ventilatorBox').value;
+                    var ventilatorHash = "#" + newCity + document.getElementById('ventilatorBox').value;
                     var labelVentilator = document.createElement('a');
                     labelVentilator.id = "ventilatorLabelId"
                     labelVentilator.htmlFor = 'instagram';
-                    labelVentilator.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('ventilatorBox').value
+                    labelVentilator.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('ventilatorBox').value
                     labelVentilator.target = "_blank";
                     labelVentilator.appendChild(document.createTextNode(ventilatorHash));
                     mycontainer.appendChild(labelVentilator);
@@ -227,11 +229,11 @@ document.getElementById('platform').onchange = function() {
 //  ===========================================================================================================
              if (document.getElementById('testBox').checked == true){
 
-               var testHash = "#" + document.getElementById('cityName').value + document.getElementById('testBox').value;
+               var testHash = "#" + newCity + document.getElementById('testBox').value;
                var labelTest = document.createElement('a');
                labelTest.id = "testLabelId"
                labelTest.htmlFor = 'instagram';
-               labelTest.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('testBox').value
+               labelTest.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('testBox').value
                labelTest.target = "_blank";
                labelTest.appendChild(document.createTextNode(testHash));
                mycontainer.appendChild(labelTest);
@@ -247,11 +249,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('testLabelId'));
                 }
                 else{
-                    var testHash = "#" + document.getElementById('cityName').value + document.getElementById('testBox').value;
+                    var testHash = "#" + newCity + document.getElementById('testBox').value;
                     var labelTest = document.createElement('a');
                     labelTest.id = "testLabelId"
                     labelTest.htmlFor = 'instagram';
-                    labelTest.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('testBox').value
+                    labelTest.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('testBox').value
                     labelTest.target = "_blank";
                     labelTest.appendChild(document.createTextNode(testHash));
                     mycontainer.appendChild(labelTest);
@@ -265,11 +267,11 @@ document.getElementById('platform').onchange = function() {
 //   ============================================================================
             if (document.getElementById('fabifluBox').checked == true){
 
-               var fabifluHash = "#" + document.getElementById('cityName').value + document.getElementById('fabifluBox').value;
+               var fabifluHash = "#" + newCity + document.getElementById('fabifluBox').value;
                var labelFabiflu = document.createElement('a');
                labelFabiflu.id = "fabifluId";
                labelFabiflu.htmlFor = 'instagram';
-               labelFabiflu.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('fabifluBox').value
+               labelFabiflu.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('fabifluBox').value
                labelFabiflu.target = "_blank";
                labelFabiflu.appendChild(document.createTextNode(fabifluHash));
                mycontainer.appendChild(labelFabiflu);
@@ -285,11 +287,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('fabifluId'));
                 }
                 else{
-                    var fabifluHash = "#" + document.getElementById('cityName').value + document.getElementById('fabifluBox').value;
+                    var fabifluHash = "#" + newCity + document.getElementById('fabifluBox').value;
                     var labelFabiflu = document.createElement('a');
                     labelFabiflu.id = "fabifluId"
                     labelFabiflu.htmlFor = 'instagram';
-                    labelFabiflu.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('fabifluBox').value
+                    labelFabiflu.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('fabifluBox').value
                     labelFabiflu.target = "_blank";
                     labelFabiflu.appendChild(document.createTextNode(fabifluHash));
                     mycontainer.appendChild(labelFabiflu);
@@ -305,11 +307,11 @@ document.getElementById('platform').onchange = function() {
 //   ==============================================================================
          if (document.getElementById('remdesivirBox').checked == true){
 
-               var remdesivirHash = "#" + document.getElementById('cityName').value + document.getElementById('remdesivirBox').value;
+               var remdesivirHash = "#" + newCity + document.getElementById('remdesivirBox').value;
                var labelRemdesivir = document.createElement('a');
                labelRemdesivir.id = "remdesivirLabelId"
                labelRemdesivir.htmlFor = 'instagram';
-               labelRemdesivir.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('remdesivirBox').value
+               labelRemdesivir.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('remdesivirBox').value
                labelRemdesivir.target = "_blank";
                labelRemdesivir.appendChild(document.createTextNode(remdesivirHash));
                mycontainer.appendChild(labelRemdesivir);
@@ -325,11 +327,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('remdesivirLabelId'));
                 }
                 else{
-                    var remdesivirHash = "#" + document.getElementById('cityName').value + document.getElementById('remdesivirBox').value;
+                    var remdesivirHash = "#" + newCity + document.getElementById('remdesivirBox').value;
                     var labelRemdesivir = document.createElement('a');
                     labelRemdesivir.id = "remdesivirLabelId"
                     labelRemdesivir.htmlFor = 'instagram';
-                    labelRemdesivir.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('remdesivirBox').value
+                    labelRemdesivir.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('remdesivirBox').value
                     labelRemdesivir.target = "_blank";
                     labelRemdesivir.appendChild(document.createTextNode(remdesivirHash));
                     mycontainer.appendChild(labelRemdesivir);
@@ -344,11 +346,11 @@ document.getElementById('platform').onchange = function() {
 //   ==============================================================================
               if (document.getElementById('favipiravirBox').checked == true){
 
-               var favipiravirHash = "#" + document.getElementById('cityName').value + document.getElementById('favipiravirBox').value;
+               var favipiravirHash = "#" + newCity + document.getElementById('favipiravirBox').value;
                var labelFavipiravir = document.createElement('a');
                labelFavipiravir.id = "favipiravirLabelId"
                labelFavipiravir.htmlFor = 'instagram';
-               labelFavipiravir.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('favipiravirBox').value
+               labelFavipiravir.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('favipiravirBox').value
                labelFavipiravir.target = "_blank";
                labelFavipiravir.appendChild(document.createTextNode(favipiravirHash));
                mycontainer.appendChild(labelFavipiravir);
@@ -364,11 +366,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('favipiravirLabelId'));
                 }
                 else{
-                    var favipiravirHash = "#" + document.getElementById('cityName').value + document.getElementById('favipiravirBox').value;
+                    var favipiravirHash = "#" + newCity + document.getElementById('favipiravirBox').value;
                     var labelFavipiravir = document.createElement('a');
                     labelFavipiravir.id = "favipiravirLabelId"
                     labelFavipiravir.htmlFor = 'instagram';
-                    labelFavipiravir.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('favipiravirBox').value
+                    labelFavipiravir.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('favipiravirBox').value
                     labelFavipiravir.target = "_blank";
                     labelFavipiravir.appendChild(document.createTextNode(favipiravirHash));
                     mycontainer.appendChild(labelFavipiravir);
@@ -383,11 +385,11 @@ document.getElementById('platform').onchange = function() {
 //   ==============================================================================
            if (document.getElementById('tocilizumabBox').checked == true){
 
-               var tocilizumabHash = "#" + document.getElementById('cityName').value + document.getElementById('tocilizumabBox').value;
+               var tocilizumabHash = "#" + newCity + document.getElementById('tocilizumabBox').value;
                var labelTocilizumab = document.createElement('a');
                labelTocilizumab.id = "tocilizumabLabelId"
                labelTocilizumab.htmlFor = 'instagram';
-               labelTocilizumab.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('tocilizumabBox').value
+               labelTocilizumab.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('tocilizumabBox').value
                labelTocilizumab.target = "_blank";
                labelTocilizumab.appendChild(document.createTextNode(tocilizumabHash));
                mycontainer.appendChild(labelTocilizumab);
@@ -403,11 +405,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('tocilizumabLabelId'));
                 }
                 else{
-                    var tocilizumabHash = "#" + document.getElementById('cityName').value + document.getElementById('tocilizumabBox').value;
+                    var tocilizumabHash = "#" + newCity + document.getElementById('tocilizumabBox').value;
                     var labelTocilizumab = document.createElement('a');
                     labelTocilizumab.id = "tocilizumabLabelId"
                     labelTocilizumab.htmlFor = 'instagram';
-                    labelTocilizumab.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('tocilizumabBox').value
+                    labelTocilizumab.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('tocilizumabBox').value
                     labelTocilizumab.target = "_blank";
                     labelTocilizumab.appendChild(document.createTextNode(tocilizumabHash));
                     mycontainer.appendChild(labelTocilizumab);
@@ -421,11 +423,11 @@ document.getElementById('platform').onchange = function() {
 //   =============================================================================
            if (document.getElementById('plasmaBox').checked == true){
 
-               var plasmaHash = "#" + document.getElementById('cityName').value + document.getElementById('plasmaBox').value;
+               var plasmaHash = "#" + newCity + document.getElementById('plasmaBox').value;
                var labelPlasma = document.createElement('a');
                labelPlasma.id = "plasmaLabelId"
                labelPlasma.htmlFor = 'instagram';
-               labelPlasma.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('plasmaBox').value
+               labelPlasma.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('plasmaBox').value
                labelPlasma.target = "_blank";
                labelPlasma.appendChild(document.createTextNode(plasmaHash));
                mycontainer.appendChild(labelPlasma);
@@ -441,11 +443,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('plasmaLabelId'));
                 }
                 else{
-                    var plasmaHash = "#" + document.getElementById('cityName').value + document.getElementById('plasmaBox').value;
+                    var plasmaHash = "#" + newCity + document.getElementById('plasmaBox').value;
                     var labelPlasma = document.createElement('a');
                     labelPlasma.id = "plasmaLabelId"
                     labelPlasma.htmlFor = 'instagram';
-                    labelPlasma.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('plasmaBox').value
+                    labelPlasma.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('plasmaBox').value
                     labelPlasma.target = "_blank";
                     labelPlasma.appendChild(document.createTextNode(plasmaHash));
                     mycontainer.appendChild(labelPlasma);
@@ -459,11 +461,11 @@ document.getElementById('platform').onchange = function() {
 //  ================================================================================
              if (document.getElementById('foodBox').checked == true){
 
-               var foodHash = "#" + document.getElementById('cityName').value + document.getElementById('foodBox').value;
+               var foodHash = "#" + newCity + document.getElementById('foodBox').value;
                var labelFood = document.createElement('a');
                labelFood.id = "foodLabelId"
                labelFood.htmlFor = 'instagram';
-               labelFood.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('foodBox').value
+               labelFood.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('foodBox').value
                labelFood.target = "_blank";
                labelFood.appendChild(document.createTextNode(foodHash));
                mycontainer.appendChild(labelFood);
@@ -479,11 +481,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('foodLabelId'));
                 }
                 else{
-                    var foodHash = "#" + document.getElementById('cityName').value + document.getElementById('foodBox').value;
+                    var foodHash = "#" + newCity + document.getElementById('foodBox').value;
                     var labelFood = document.createElement('a');
                     labelFood.id = "foodLabelId"
                     labelFood.htmlFor = 'instagram';
-                    labelFood.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('foodBox').value
+                    labelFood.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('foodBox').value
                     labelFood.target = "_blank";
                     labelFood.appendChild(document.createTextNode(foodHash));
                     mycontainer.appendChild(labelFood);
@@ -498,11 +500,11 @@ document.getElementById('platform').onchange = function() {
 
               if (document.getElementById('ambulanceBox').checked == true){
 
-               var ambulanceHash = "#" + document.getElementById('cityName').value + document.getElementById('ambulanceBox').value;
+               var ambulanceHash = "#" + newCity + document.getElementById('ambulanceBox').value;
                var labelAmbulance = document.createElement('a');
                labelAmbulance.id = "ambulanceLabelId"
                labelAmbulance.htmlFor = 'instagram';
-               labelAmbulance.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('ambulanceBox').value
+               labelAmbulance.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('ambulanceBox').value
                labelAmbulance.target = "_blank";
                labelAmbulance.appendChild(document.createTextNode(ambulanceHash));
                mycontainer.appendChild(labelAmbulance);
@@ -518,11 +520,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('ambulanceLabelId'));
                 }
                 else{
-                    var ambulanceHash = "#" + document.getElementById('cityName').value + document.getElementById('ambulanceBox').value;
+                    var ambulanceHash = "#" + newCity + document.getElementById('ambulanceBox').value;
                     var labelAmbulance = document.createElement('a');
                     labelAmbulance.id = "ambulanceLabelId"
                     labelAmbulance.htmlFor = 'instagram';
-                    labelAmbulance.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('ambulanceBox').value
+                    labelAmbulance.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('ambulanceBox').value
                     labelAmbulance.target = "_blank";
                     labelAmbulance.appendChild(document.createTextNode(ambulanceHash));
                     mycontainer.appendChild(labelAmbulance);
@@ -537,11 +539,11 @@ document.getElementById('platform').onchange = function() {
 
               if (document.getElementById('therapyBox').checked == true){
 
-               var therapyHash = "#" + document.getElementById('cityName').value + document.getElementById('therapyBox').value;
+               var therapyHash = "#" + newCity + document.getElementById('therapyBox').value;
                var labelTherapy = document.createElement('a');
                labelTherapy.id = "therapyLabelId"
                labelTherapy.htmlFor = 'instagram';
-               labelTherapy.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('therapyBox').value
+               labelTherapy.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('therapyBox').value
                labelTherapy.target = "_blank";
                labelTherapy.appendChild(document.createTextNode(therapyHash));
                mycontainer.appendChild(labelTherapy);
@@ -557,11 +559,11 @@ document.getElementById('platform').onchange = function() {
                        mycontainer.removeChild(document.getElementById('therapyLabelId'));
                 }
                 else{
-                    var therapyHash = "#" + document.getElementById('cityName').value + document.getElementById('therapyBox').value;
+                    var therapyHash = "#" + newCity + document.getElementById('therapyBox').value;
                     var labelTherapy = document.createElement('a');
                     labelTherapy.id = "therapyLabelId"
                     labelTherapy.htmlFor = 'instagram';
-                    labelTherapy.href = "https://www.instagram.com/explore/tags/" + document.getElementById('cityName').value + document.getElementById('therapyBox').value
+                    labelTherapy.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('therapyBox').value
                     labelTherapy.target = "_blank";
                     labelTherapy.appendChild(document.createTextNode(therapyHash));
                     mycontainer.appendChild(labelTherapy);

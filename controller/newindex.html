@@ -22,7 +22,7 @@
             {% endif %}
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="cityName" placeholder="City" name="cityName"  value="{{request.form['cityName']}}" required>
+                <input type="text" class="form-control item" id="cityName" placeholder="City" name="cityName"  value="{{request.form['cityName']}}"  pattern="[A-Za-z ]*" required>
             </div>
             <br>
             <div class="form-group">
