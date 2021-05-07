@@ -4,6 +4,7 @@ body{
 
 .registration-form{
 	padding: 50px 0;
+	background-color: #f2e9e4;
 }
 #strip{
     background-color: #fff;
@@ -29,10 +30,14 @@ body{
 }
 .registration-form .form-icon{
 	text-align: center;
-    background-color: #5891ff;
+    background-image: url("d519dcec57c842ec879c2ee1347212bd.png");
+    position: relative;
+    background-size: 70px 70px;
+    background-color: #f2e9e4;
     border-radius: 50%;
     font-size: 40px;
-    color: white;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
     width: 100px;
     height: 100px;
     margin: auto;

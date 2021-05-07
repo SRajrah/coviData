@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect
 import webbrowser
+print(webbrowser._browsers)
 majorCities = []
 
 def generateString():
@@ -82,9 +83,9 @@ def generateString():
             else:
                 stringToSearch = cityName + " " + (" ").join(requiredItems) + " need required"
             redirectUrl = "https://www.facebook.com/search/top?q=" + stringToSearch
-            webbrowser.open(redirectUrl)
-            return render_template("newindex.html")
-            #return redirect(redirectUrl)
+
+            return redirect(redirectUrl)
+
 
         elif platform == 'twitter':
             if requirement == 'need':
@@ -116,8 +117,7 @@ def generateString():
 
 
             redirectUrl = "https://www.twitter.com/search?q="+stringToSearch
-            webbrowser.open_new_tab(redirectUrl)
-            return render_template("newindex.html")
+            return redirect(redirectUrl)
         else:
             message = "Please select the platform!"
             return render_template("newindex.html",message=message)
