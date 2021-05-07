@@ -8,13 +8,14 @@
     <link rel="stylesheet" type= "text/css"  href="{{ url_for('static', filename='styles/newstyle.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-   
+    <link rel="shortcut icon" href="{{ url_for('static', filename='styles/favicon.ico') }}" type="image/x-icon">
+
 </head>
 <body>
     <div class="registration-form">
-        <form id="mainForm" action="{{ url_for('generateString')}}" method="POST">
+        <form id="mainForm" target="_blank" action="{{ url_for('generateString')}}" method="POST">
             <div class="form-icon">
-                <span><i class="icon icon-user"></i></span>
+                <span></span>
             </div>
             <div id="messageBox">
             {% if message %}
@@ -22,7 +23,7 @@
             {% endif %}
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="cityName" placeholder="City" name="cityName"  value="{{request.form['cityName']}}" required>
+                <input type="text" class="form-control item" id="cityName" placeholder="City" name="cityName"  value="{{request.form['cityName']}}"  pattern="[A-Za-z ]*" required>
             </div>
             <br>
             <div class="form-group">
@@ -33,10 +34,10 @@
 
             <div class="form-group">
                 <input type="radio" id="need" name="requirement" value="need" class="form-control items"  required>
-                <label for="need">Need</label>
+                <label for="need">Need a resource</label>
             </div><div class="form-group">
                 <input type="radio" id="provide" name="requirement" value="provide" class="form-control items">
-                <label for="provide">Provide</label>
+                <label for="provide">Provide a resource</label>
             </div>
             <br>
             <div class="form-group">
@@ -174,6 +175,7 @@
                 <a href="#"><i class="icon-social-google" title="Google"></i></a>
                 <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
             </div>
+            <label>coded with &#128420;  by SR & DV </label>
 
         </div>
     </div>
