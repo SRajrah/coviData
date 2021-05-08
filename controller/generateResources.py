@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect
 import webbrowser
+print(webbrowser._browsers)
 majorCities = []
 
 def generateString():
@@ -10,6 +11,7 @@ def generateString():
     if request.method == "POST":
         #get form data into variables
         cityName = request.form.get("cityName")
+        cityName = cityName.strip()
         platform = request.form.get("platform")
         requirement = request.form.get("requirement")
         beds = request.form.get("bedBox")
@@ -75,10 +77,16 @@ def generateString():
 
         
         if platform == 'facebook':
-            if requirement=='need':
-                stringToSearch = cityName+" "+(" ").join(requiredItems)+" need"
-            redirectUrl = "https://www.facebook.com/search/top?q="+stringToSearch
-            return webbrowser.open_new_tab(redirectUrl)
+
+            if requirement == 'need':
+                stringToSearch = cityName + " " + (" ").join(requiredItems) + " available present"
+            else:
+                stringToSearch = cityName + " " + (" ").join(requiredItems) + " need required"
+            redirectUrl = "https://www.facebook.com/search/top?q=" + stringToSearch
+
+            return redirect(redirectUrl)
+
+
         elif platform == 'twitter':
             if requirement == 'need':
                 print(twitterUnverifiedFilter)
@@ -108,11 +116,8 @@ def generateString():
                     stringToSearch = cityName+" ("+(" OR ").join(requiredItems)+") "+"(needed OR need OR required OR require OR needs OR patient OR patients) "+'-"available" '+'-"present"'
 
 
-            # searchOptions= ["All tweets","Only tweets containing 'verified'","Only tweets containing 'unverified'"]
-            # return render_template("newindex.html", name=platformSelection, searchOptions=searchOptions)
             redirectUrl = "https://www.twitter.com/search?q="+stringToSearch
-            return webbrowser.open_new_tab(redirectUrl)
-            # getSearchOptions(platformSelection)
+            return redirect(redirectUrl)
         else:
             message = "Please select the platform!"
             return render_template("newindex.html",message=message)
