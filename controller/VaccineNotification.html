@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Covid19 Social Resources</title>
+    <link rel="stylesheet" type= "text/css"  href="{{ url_for('static', filename='styles/newstyle.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='styles/favicon.ico') }}" type="image/x-icon">
+
+</head>
+<body>
+    <div class="registration-form">
+        <div class="vaccineNotification">
+            <h4>VACCINATION SLOT NOTIFICATION </h4>
+            <form id="notifyForm" target="_blank" action="{{ url_for('vaccineNotification')}}" method="POST">
+                <div class="form-group1">
+                    <label style="color : black;"><b>Get a notification from us whenever vaccination Slots are available in your district</b></label>
+                </div>
+                <div class="form-group1">
+                    <input type="text" class="form-control item" id="email" placeholder="Email" name="email"  value="{{request.form['email']}}" >
+                </div>
+                <div class="form-group1">
+                    <input type="text" class="form-control item" id="pincode" placeholder="Pincode" name="pincode"  value="{{request.form['pincode']}}" >
+                </div>
+                <div class="form-group1">
+                    <input type="text" class="form-control item" id="district" placeholder="District" name="district"  value="{{request.form['district']}}" >
+                </div><br>
+
+                <button id="notifyButton" type="submit" class="btn btn-primary">notify me</button>
+            </form>
+        </div>
+        <div class="social-media">
+
+            <div class="social-icons">
+                <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
+                <a href="#"><i class="icon-social-google" title="Google"></i></a>
+                <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
+            </div>
+            <label>coded with &#128420;  by SR & DV </label>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='javascript/addOptions.js')}}"></script>
+
+    <!--<script src="assets/js/script.js"></script> -->
+</body>
+</html>
