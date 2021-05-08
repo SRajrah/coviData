@@ -169,8 +169,10 @@
             <button id="submitButton" type="submit" class="btn btn-primary">Generate Info</button>
         </form>
         <div class="vaccineNotification">
-            <h4>VACCINATION SLOT NOTIFICATIONS </h4>
-                <button  onclick="{{ url_for('vaccineNotification')}}" id="notifyButton" class="btn btn-primary">Get Vaccine Slot availability Notification</button>
+            <h4>VACCINATION SLOT NOTIFICATION </h4>
+            <form id="notifyForm" target="_blank" action="{{ url_for('vaccineNotification')}}" method="POST">
+                <button id="notifyButton" type="submit" class="btn btn-primary">Get Vaccine Slot availability Notification</button>
+            </form>
         </div>
         <div class="social-media">
 
