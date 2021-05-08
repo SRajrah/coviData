@@ -10,15 +10,19 @@ def emailAlert(subject, body, to):
     msg['to'] = to
     user = "covid19socialcontact@gmail.com"
     msg['from'] = user
-    password = "nqgmoerkrpssctxg"
+    password = "ndpxqxpvecftabyt"
 
     #server details
-    server = smtplib.SMTP('localhost', 8080)
+    print("Trying to connect ot server")
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    print("connected to server")
     server.starttls()
+    print("start tls")
     server.login(user, password)
+    print("logged in ")
     server.send_message(msg)
+    print("message sent")
     server.quit()
 
 if __name__ == "__main__":
-    print(socket.getaddrinfo('localhost', 8080))
-    emailAlert("Hello world test!", "Hi there!", "shubartking@gmail.com")
+    emailAlert("Hello world test!", "Hi there! This is a test email you are receiving as you are lovely.", "devanshi.verma123@gmail.com")
