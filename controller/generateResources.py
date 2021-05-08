@@ -1,7 +1,32 @@
 from flask import Flask, request, render_template, redirect
-import webbrowser
-print(webbrowser._browsers)
+from config.dbconn import connectDB
+
 majorCities = []
+
+def vaccineNotification():
+
+    if request.method == "POST":
+        print("sometin")
+        myconn = connectDB()
+        mycursor = myconn.cursor()
+        mycursor.execute("SELECT * FROM myudata")
+        myresult = mycursor.fetchall()
+        for x in myresult:
+            print(x)
+    return render_template("VaccineNotification.html")
+
+def notificationData():
+    if request.method == "POST":
+        print("sometin")
+        myconn = connectDB()
+        mycursor = myconn.cursor()
+        mycursor.execute("SELECT * FROM myudata")
+        myresult = mycursor.fetchall()
+        for x in myresult:
+            print(x)
+
+    return render_template("VaccineNotification.html")
+
 
 def generateString():
     reqItemString = ""
