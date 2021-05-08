@@ -1,51 +1,15 @@
 import requests
 import smtplib
 import json
-pincodes = [""]
+
 
 def getUniquePincodes():
     #sql query to get distinct pincodes
+    #sql query to get distinct district Ids
     for singlePin in pincodes:
         getDataByPincodeDaily(singlePin)
-
-
-
-def getDataByPincodeDaily(pincode = 180001):
-    paramDict = {
-        'pincode': pincode,
-        'date': '10-05-2021'}
-    my_headers = {
-        'Accept-Language': 'hi_IN',
-        'Accept': 'application/json',
-        'User-Agent' :'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
-    }
-    url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin"
-    response = requests.get(url, params=paramDict, headers=my_headers)
-    vaccineDataString = str(response.json())
-    vaccineData = json.loads(vaccineDataString.replace("\'", "\""))
-    availableCentres = []
-    if vaccineData["sessions"]!="[]":
-        vaccineCentreDicts = vaccineData["sessions"]
-        for info in vaccineCentreDicts:
-            if info['available_capacity'] > 0:
-                availableCentres.append(info)
-
-    if len(availableCentres)!=0:
-        #sql to get all users under this pincode
-        # address -
-        for eachMember in memberList:
-            emailAlert(subject,message,to)
-
-
-
-
-
-
-
-
-
-
-
+    for singleDistrict in districts:
+        getDataByDistrictWeekly(singleDistrict)
 
 
 def getDataByPincodeWeekly(pincode):
@@ -59,20 +23,32 @@ def getDataByPincodeWeekly(pincode):
     }
     url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin"
     response = requests.get(url, params=paramDict, headers=my_headers)
-    print(response.json())
+    vaccineDataString = str(response.json())
+    vaccineData = json.loads(vaccineDataString.replace("\'", "\""))
+    availableCentres = []
+    if vaccineData["sessions"] != "[]":
+        vaccineCentreDicts = vaccineData["sessions"]
+        for info in vaccineCentreDicts:
+            if info['available_capacity'] > 0:
+                availableCentres.append(info)
 
-def getDataByDistrictDaily(districtID):
-    paramDict = {
-        'district_id': '180001',
-        'date': '10-05-2021'}
-    my_headers = {
-        'Accept-Language': 'hi_IN',
-        'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
-    }
-    url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict"
-    response = requests.get(url, params=paramDict, headers=my_headers)
-    print(response.json())
+    if len(availableCentres) != 0:
+        # sql to get all users under this pincode
+        # address -
+        emailMessage = """Dear user \n We have an important update for you. New vaccine slots have been added in your area. 
+            \nThe information is as provided below. Please make sure to register right away before the slots get exhausted.\n"""
+        for eachCentre in availableCentres:
+
+            address = eachCentre['address'] + ','+eachCentre['block'] + ','+eachCentre['district'] + ',' + eachCentre['state'] + '-' + eachCentre['pincode'] + '\n'
+            vaccine = eachCentre['vaccine'] + '\n'
+            availableSlot = eachCentre['slots'] + '\n'
+            capacity = eachCentre['available_capacity'] + '\n'
+            fee = eachCentre['fee_type']
+            ageLimit = eachCentre['min_age_limit']
+
+
+        for eachMember in memberList:
+            emailAlert(subject, emailMessage, to)
 
 def getDataByDistrictWeekly(districtID):
     paramDict = {
@@ -86,6 +62,53 @@ def getDataByDistrictWeekly(districtID):
     url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict"
     response = requests.get(url, params=paramDict, headers=my_headers)
     print(response.json())
+    vaccineDataString = str(response.json())
+    vaccineData = json.loads(vaccineDataString.replace("\'", "\""))
+    availableCentres = []
+    if vaccineData["sessions"] != "[]":
+        vaccineCentreDicts = vaccineData["sessions"]
+        for info in vaccineCentreDicts:
+            if info['available_capacity'] > 0:
+                availableCentres.append(info)
 
-getDataByPincodeDaily()
+    if len(availableCentres) != 0:
+        # sql to get all users under this pincode
+        # address -
+        emailMessage = """Dear user \n We have an important update for you. New vaccine slots have been added in your area. 
+                \nThe information is as provided below. Please make sure to register right away before the slots get exhausted.\n"""
+        for eachCentre in availableCentres:
+            address = eachCentre['address'] + ',' + eachCentre['block'] + ',' + eachCentre['district'] + ',' + \
+                      eachCentre['state'] + '-' + eachCentre['pincode'] + '\n'
+            vaccine = eachCentre['vaccine'] + '\n'
+            availableSlot = eachCentre['slots'] + '\n'
+            capacity = eachCentre['available_capacity'] + '\n'
+            fee = eachCentre['fee_type']
+            ageLimit = eachCentre['min_age_limit']
 
+        for eachMember in memberList:
+            emailAlert(subject, emailMessage, to)
+
+
+def getDataByDistrictDaily(districtID):
+    paramDict = {
+        'district_id': '180001',
+        'date': '10-05-2021'}
+    my_headers = {
+        'Accept-Language': 'hi_IN',
+        'Accept': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
+    }
+    url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict"
+    response = requests.get(url, params=paramDict, headers=my_headers)
+    print(response.json())
+def getDataByPincodeDaily(pincode = 180001):
+    paramDict = {
+        'pincode': pincode,
+        'date': '10-05-2021'}
+    my_headers = {
+        'Accept-Language': 'hi_IN',
+        'Accept': 'application/json',
+        'User-Agent' :'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
+    }
+    url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin"
+    response = requests.get(url, params=paramDict, headers=my_headers)
