@@ -25,4 +25,4 @@ def emailAlert(subject, body, to):
     server.quit()
 
 if __name__ == "__main__":
-    emailAlert("Hello world test!", "Hi there! This is a test email you are receiving as you are lovely.", "devanshi.verma123@gmail.com")
+    emailAlert("Hello world test!", "Hi there! This is a test email you are receiving as you are lovely.", "8894862990@airtelap.com")
