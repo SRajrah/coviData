@@ -9,4 +9,10 @@ def connectDB():
     )
     return mydb
 
+def queryResult(query):
+    myconn = connectDB()
+    mycursor = myconn.cursor()
+    mycursor.execute(query)
+    result = mycursor.fetchall()
+    return result
 
