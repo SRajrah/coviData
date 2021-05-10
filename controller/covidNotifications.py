@@ -1,15 +1,26 @@
 import requests
 import smtplib
 import json
+from datetime import date
 
+today = date.today()
+dateToday = today.strftime("%d-%m-%Y")
+
+def calcTimeCall(c):
+    return c*0.05
 
 def getUniquePincodes():
     #sql query to get distinct pincodes
     #sql query to get distinct district Ids
     for singlePin in pincodes:
         getDataByPincodeDaily(singlePin)
-    for singleDistrict in districts:
-        getDataByDistrictWeekly(singleDistrict)
+    countDistinctDis = "qyery"
+    sleepTime = calcTimeCall(countDistinctDis)
+    while True:
+        for singleDistrict in districts:
+            getDataByDistrictWeekly(singleDistrict)
+
+        sleep(sleepTime)
 
 
 def getDataByPincodeWeekly(pincode):
@@ -52,8 +63,8 @@ def getDataByPincodeWeekly(pincode):
 
 def getDataByDistrictWeekly(districtID):
     paramDict = {
-        'district_id': '180001',
-        'date': '10-05-2021'}
+        'district_id': districtID,
+        'date': dateToday}
     my_headers = {
         'Accept-Language': 'hi_IN',
         'Accept': 'application/json',
@@ -65,7 +76,7 @@ def getDataByDistrictWeekly(districtID):
     vaccineDataString = str(response.json())
     vaccineData = json.loads(vaccineDataString.replace("\'", "\""))
     availableCentres = []
-    if vaccineData["sessions"] != "[]":
+    if vaccineData["sessions"] != "[]" and response.status_code == 200:
         vaccineCentreDicts = vaccineData["sessions"]
         for info in vaccineCentreDicts:
             if info['available_capacity'] > 0:

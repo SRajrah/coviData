@@ -15,7 +15,10 @@
     <div class="registration-form">
         <div class="vaccineNotification">
             <h4>VACCINATION SLOT NOTIFICATION </h4>
-            <form id="notifyForm" target="_blank" action="{{ url_for('vaccineNotification')}}" method="POST">
+            <form id="notifyForm" target="_blank" action="{{ url_for('notificationData')}}" method="POST">
+                {% if message %}
+                    <p>{{message}}</p>
+                {% endif %}
                 <div class="form-group1">
                     <label style="color : black;"><b>Get a notification from us whenever vaccination Slots are available in your district</b></label>
                 </div>
