@@ -17,7 +17,7 @@ document.getElementById('platform').onchange = function() {
     var label2 = document.createElement('label');
   	label2.htmlFor = 'facebook';
     label2.id = 'label2'
-//    document.querySelector(".platformOptions").innerHTML = String.fromCodePoint(0X1F4A1);
+
   	label1.appendChild(document.createTextNode('Add less resources per search for effective results.'));
    	label2.appendChild(document.createTextNode('Also make sure that you are logged in to facebook using the browser/app.'));
    	mycontainer.appendChild(label1);
