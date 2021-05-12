@@ -14,8 +14,15 @@ document.getElementById('platform').onchange = function() {
   	var label1 = document.createElement('label');
   	label1.htmlFor = 'facebook';
     label1.id = 'label1'
-  	label1.appendChild(document.createTextNode('Please make sure you are logged in to facebook using brower/app'));
+    var label2 = document.createElement('label');
+  	label2.htmlFor = 'facebook';
+    label2.id = 'label2'
+
+  	label1.appendChild(document.createTextNode('Add less resources per search for effective results.'));
+   	label2.appendChild(document.createTextNode('Also make sure that you are logged in to facebook using the browser/app.'));
    	mycontainer.appendChild(label1);
+   	mycontainer.append(document.createElement('br'));
+   	mycontainer.appendChild(label2);
   	mycontainer.append(document.createElement('br'));
 
   }
@@ -33,6 +40,7 @@ document.getElementById('platform').onchange = function() {
 // 		  container.removeChild(label3);
 //
 //    }
+
 
     var checkbox1 = document.createElement('input');
     checkbox1.type = 'checkbox';
@@ -54,8 +62,17 @@ document.getElementById('platform').onchange = function() {
     label3.htmlFor = 'unverified';
     label3.appendChild(document.createTextNode('Unverified'));
 
+    var label4 = document.createElement('label');
+  	label4.htmlFor = 'facebook';
+    label4.id = 'label2'
+//    document.querySelector(".platformOptions").innerHTML = String.fromCodePoint(0X1F4A1);
+  	label4.appendChild(document.createTextNode('Please make sure to go to the latest tab in twitter.'));
+
+    mycontainer.appendChild(label4);
+    mycontainer.append(document.createElement('br'));
     mycontainer.appendChild(checkbox1);
     mycontainer.appendChild(label2);
+    mycontainer.appendChild( document.createTextNode( '\u00A0 \u00A0 \u00A0' ) );
     mycontainer.appendChild(checkbox2);
   	mycontainer.appendChild(label3);
 
@@ -74,7 +91,7 @@ document.getElementById('platform').onchange = function() {
         var label4 = document.createElement('label');
         label4.htmlFor = 'instagram';
         label4.id = "instaLine"
-        label4.appendChild(document.createTextNode('We will generate a few hashtags based on your selected resources'));
+        label4.appendChild(document.createTextNode('We will generate a few hashtags based on your selected resources. Click the links.'));
         mycontainer.appendChild(label4);
 //        mycontainer.append(document.createElement('br'));
 
@@ -471,6 +488,26 @@ document.getElementById('platform').onchange = function() {
                mycontainer.appendChild(labelFood);
                mycontainer.append(document.createElement('br'));
 
+               var foodHash1 = "#" + newCity + "meals";
+               var labelFood1 = document.createElement('a');
+               labelFood1.id = "foodLabelId1"
+               labelFood1.htmlFor = 'instagram';
+               labelFood1.href = "https://www.instagram.com/explore/tags/" + newCity + "meals"
+               labelFood1.target = "_blank";
+               labelFood1.appendChild(document.createTextNode(foodHash1));
+               mycontainer.appendChild(labelFood1);
+               mycontainer.append(document.createElement('br'));
+
+               var foodHash2 = "#" + newCity + "tiffin";
+               var labelFood2 = document.createElement('a');
+               labelFood2.id = "foodLabelId2"
+               labelFood2.htmlFor = 'instagram';
+               labelFood2.href = "https://www.instagram.com/explore/tags/" + newCity + "tiffin"
+               labelFood2.target = "_blank";
+               labelFood2.appendChild(document.createTextNode(foodHash2));
+               mycontainer.appendChild(labelFood2);
+               mycontainer.append(document.createElement('br'));
+
            }
 
           document.getElementById('foodBox').onchange = function() {
@@ -479,6 +516,8 @@ document.getElementById('platform').onchange = function() {
 
                 if(document.getElementById('foodBox').checked == false){
                        mycontainer.removeChild(document.getElementById('foodLabelId'));
+                       mycontainer.removeChild(document.getElementById('foodLabelId1'));
+                       mycontainer.removeChild(document.getElementById('foodLabelId2'));
                 }
                 else{
                     var foodHash = "#" + newCity + document.getElementById('foodBox').value;
@@ -489,6 +528,26 @@ document.getElementById('platform').onchange = function() {
                     labelFood.target = "_blank";
                     labelFood.appendChild(document.createTextNode(foodHash));
                     mycontainer.appendChild(labelFood);
+                    mycontainer.append(document.createElement('br'));
+
+                    var foodHash1 = "#" + newCity + "meals";
+                    var labelFood1 = document.createElement('a');
+                    labelFood1.id = "foodLabelId1"
+                    labelFood1.htmlFor = 'instagram';
+                    labelFood1.href = "https://www.instagram.com/explore/tags/" + newCity + "meals"
+                    labelFood1.target = "_blank";
+                    labelFood1.appendChild(document.createTextNode(foodHash1));
+                    mycontainer.appendChild(labelFood1);
+                    mycontainer.append(document.createElement('br'));
+
+                    var foodHash2 = "#" + newCity + "tiffin";
+                    var labelFood2 = document.createElement('a');
+                    labelFood2.id = "foodLabelId2"
+                    labelFood2.htmlFor = 'instagram';
+                    labelFood2.href = "https://www.instagram.com/explore/tags/" + newCity + "tiffin"
+                    labelFood2.target = "_blank";
+                    labelFood2.appendChild(document.createTextNode(foodHash2));
+                    mycontainer.appendChild(labelFood2);
                     mycontainer.append(document.createElement('br'));
 
                 }
