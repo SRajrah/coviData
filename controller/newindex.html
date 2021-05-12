@@ -131,6 +131,8 @@
             </div><br>
             <br>
             <div id="container-platform">
+                <label>&#128161; Tip: For more effective results, select Twitter. </label>
+                <br>
                 <select id="platform" name='platform'>
                     <option id="facebook" name="platform" value="facebook" class="form-control items">Facebook</option>
                     <option id="twitter" name="platform" value="twitter" class="form-control items">Twitter</option>
@@ -138,7 +140,7 @@
                     <option value="" selected>Select an option</option>
                 </select>
             </div>
-            <div id="container">
+            <div id="container" class="platformOptions">
             </div>
 <!-- 
             <div class="form-group">
@@ -168,12 +170,7 @@
             <br>
             <button id="submitButton" type="submit" class="btn btn-primary">Generate Info</button>
         </form>
-        <div class="vaccineNotification">
-            <h4>VACCINATION SLOT NOTIFICATION </h4>
-            <form id="notifyForm" target="_blank" action="{{ url_for('vaccineNotification')}}" method="POST">
-                <button id="notifyButton" type="submit" class="btn btn-primary">Get Vaccine Slot availability Notification</button>
-            </form>
-        </div>
+
         <div class="social-media">
 
             <div class="social-icons">
