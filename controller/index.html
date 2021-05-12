@@ -1,37 +1,33 @@
+<!DOCTYPE html>
 <html>
-    <form action="{{ url_for('generateString')}}" method="POST">
-    <label for="firstname">First Name:</label>
-    <input type="text" id="firstname" name="fname" placeholder="firstname">
-    <label for="lastname">Last Name:</label>
-    <input type="text" id="lastname" name="lname" placeholder="lastname">
-     <p>Please select your gender:</p>
-      <input type="radio" id="facebook" name="platform" value="facebook">
-      <label for="facebook">Facebook - Please make sure you are already logged in to facebook in your browser/app</label>
-      <label for="facebook"></label><br>
-      <input type="radio" id="twitter" name="platform" value="twitter">
-      <label for="twitter">Twitter</label><br>
-      <input type="radio" id="Instagram" name="platform" value="instagram">
-      <label for="Instagram">Instagram</label><br>
-      <input type="checkbox" id="BedBox" name="BedBox" value="Beds">
-      <label for="BedBox">Beds</label><br>
-    <button type="submit">Take me to resources</button>
-    </form>
+<body>
+
+<p>Click the button to return the value of the string object.</p>
+
+<button onclick="httpGetAsync()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+//const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+var header = 'Access-Control-Allow-Origin'
+var value = 'http://localhost:3000';
+XMLHttpRequest.setRequestHeader(header, value)
+ function httpGetAsync(callback)
+ {
+    theUrl = ''+'https://www.google.com';
+     var xmlHttp = new XMLHttpRequest();
+     xmlHttp.onreadystatechange = function() {
+         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+             console.log("HIs")
+     }
+     console.log("HI")
+     xmlHttp.open("GET", theUrl, true);  //true for asynchronous
+     document.getElementById("demo").innerHTML = xmlHttp.status;
+     xmlHttp.send(null);
+ }
+
+</script>
+
+</body>
 </html>
-<select name="searchOption" method="GET" action="/"></select>
-
-
-<select name="searchOptions" id="searchOptions" multiple>
-  {% if searchOptions %}
-    {% for searchOption in searchOptions %}
-        <option value="{{searchOption}}">{{searchOption}}</option>"
-    {% endfor %}
-  {% endif %}
-</select>
-<label for="cars">Choose a car:</label>
-
-<select name="cars" id="cars" multiple>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="opel">Opel</option>
-  <option value="audi">Audi</option>
-</select>
