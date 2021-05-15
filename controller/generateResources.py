@@ -1,35 +1,12 @@
 from flask import Flask, request, render_template, redirect
-from config.dbconn import connectDB
-import time
+
 majorCities = []
 
-def vaccineNotification():
+def usefulLinks():
+    return  render_template("UsefulLinks.html")
 
-    if request.method == "POST":
-        # i = 0
-        # while i < 10:
-        #     i = i+1
-        #     message = "get data -" + str(i)
-        #     time.sleep(10)
-        print("sometin")
-        myconn = connectDB()
-        mycursor = myconn.cursor()
-
-        mycursor.execute("SELECT * FROM myudata LIMIT 3,5")
-        myresult = mycursor.fetchall()
-        for x in myresult:
-            print(x)
-    return render_template("VaccineNotification.html")
-
-def notificationData():
-    # i = 0
-    # while True:
-    #     i = i+1
-    #     message = "get data -" + str(i)
-    #     print(message)
-    #     time.sleep(2)
-    return render_template("VaccineNotification.html")
-
+def donationLinks():
+    return  render_template("donationLinks.html")
 
 def generateString():
     reqItemString = ""
@@ -157,25 +134,3 @@ def generateString():
             return reqItemString
 
     return render_template("newindex.html")
-
-def myprints():
-    print("somthings")
-
-
-def extractFromTweet(tweets):
-    cityfound = 0
-    for city in majorCities:
-        for tweet in tweets:
-            tweet = tweet.lower()
-            if tweet.find(city) != -1:
-                cityFound = 1
-            if tweet.find("bed") or tweet.find("beds"):
-                bedFound = 1
-            if tweet.find("oxygen") or tweet.find("oxygens"):
-                oxygenFound = 1
-            if tweet.find("oxygen") or tweet.find("oxygens"):
-                oxygenFound = 1
-            if tweet.find("oxygen") or tweet.find("oxygens"):
-                oxygenFound = 1
-            if tweet.find("oxygen") or tweet.find("oxygens"):
-                oxygenFound = 1

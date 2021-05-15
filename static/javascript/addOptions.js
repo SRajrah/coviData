@@ -105,6 +105,7 @@ document.getElementById('platform').onchange = function() {
                 labelBed.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('bedBox').value
                 labelBed.target = "_blank";
                 labelBed.appendChild(document.createTextNode(bedHash));
+
                 mycontainer.appendChild(labelBed);
                 mycontainer.appendChild(br1);
                 
