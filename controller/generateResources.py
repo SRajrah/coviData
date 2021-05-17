@@ -33,11 +33,6 @@ def generateString():
         ambulance = request.form.get("ambulanceBox")
         therapy = request.form.get("therapyBox")
 
-        #get unverified and verified values in variables
-        if platform =='twitter':
-            twitterUnverifiedFilter = request.form.get("unverified")
-            twitterVerifiedFilter = request.form.get("verified")
-
         print(cityName, requirement, beds, icu, oxygen, ventilator, tests, fabiflu, remdesivir, favipiravir, tocilizumab, plasma, food, ambulance, therapy, platform)
 
         if cityName is not None:
@@ -93,11 +88,16 @@ def generateString():
 
 
         elif platform == 'twitter':
+
+            # get unverified and verified values in variables
+            twitterUnverifiedFilter = request.form.get("unverified")
+            twitterVerifiedFilter = request.form.get("verified")
+
             if requirement == 'need':
                 print(twitterUnverifiedFilter)
                 print(twitterVerifiedFilter)
                 if twitterUnverifiedFilter is not None and twitterVerifiedFilter is not None:
-                    stringToSearch = twitterVerifiedFilter+" "+twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
+                    stringToSearch = "("+twitterVerifiedFilter+" OR "+twitterUnverifiedFilter+") "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
 
                 elif twitterUnverifiedFilter is not None and twitterVerifiedFilter is None:
                     stringToSearch = twitterUnverifiedFilter+" "+cityName+" ("+(" OR ").join(requiredItems)+") "+"(available OR present) "+'-"needed"'+'-"need" '+'-"required" '+'-"require" '+'-"needs" '
