@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Covid19 Social Resources</title>
+    <link rel="stylesheet" type= "text/css"  href="{{ static_autoversion('styles/newstyle.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='styles/favicon.ico') }}" type="image/x-icon">
+
+</head>
+<body>
+
+    <div class="registration-form">
+        <form id="mainForm" target="_blank" action="{{ url_for('generateString')}}" method="POST">
+            <a href="{{ url_for('generateString') }}">
+                <div class="form-icon">
+                    <span></span>
+                </div>
+            </a>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand"href="{{ url_for('donationLinks') }}">Donation Links</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#f2e9e4">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('generateString') }}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('usefulLinks') }}">Useful Links</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <div id="messageBox">
+            {% if message %}
+                    <p>{{message}}</p>
+            {% endif %}
+            </div>
+            <div class="useful_links">
+                <a href="https://www.khalsaaid.org/donate-india" target="_blank">Khalsa Aid</a>
+            </div>
+            <div class="useful_links">
+                <a href="https://www.ketto.org/fundraiser/FeedingfromfarForCorona" target="_blank">Ketto</a>
+            </div>
+            <div class="useful_links">
+                <a href="https://hemkuntfoundation.com/donate-now/" target="_blank">Hemkunt Foundation</a>
+            </div>
+            <div class="useful_links">
+                <a href="https://www.helpageindia.org/covid-19/" target="_blank">Helpage India</a>
+            </div>
+            <div class="useful_links">
+                <a href="https://covid.giveindia.org/oxygen/" target="_blank">Give India</a>
+            </div>
+            <div class="useful_links">
+                <a href="https://milaap.org/fundraisers/Donate-for-Oxygen#" target="_blank">Milaap</a>
+            </div>
+             <div class="useful_links">
+                <a href="https://www.sewafederation.org/get-involved/#donate" target="_blank">Sewa Cooperative Federation</a>
+            </div>
+             <div class="useful_links">
+                <a href="https://goonj.org/support-covid-19-affected/?utm_medium=null&utm_source=null&utm_campaign=null" target="_blank">Goonj</a>
+            </div>
+            <div class="useful_links">
+                <label>&#9757; Note: Please verify the donation links carefully before making a donation. </label>
+            </div>
+        <div class="social-media">
+
+            <div class="social-icons">
+                <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
+                <a href="#"><i class="icon-social-google" title="Google"></i></a>
+                <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
+            </div>
+            <label>coded with &#128420;  by SR & DV </label>
+
+        </div>
+
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{static_autoversion('javascript/addOptions.js') }}"></script>
+
+    <!--<script src="assets/js/script.js"></script> -->
+</body>
+</html>

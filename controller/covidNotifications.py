@@ -99,6 +99,19 @@ def getDataByDistrictWeekly(districtID):
         for eachMember in memberList:
             emailAlert(subject, emailMessage, to)
 
+def getDataByDistrictWeeklyDummy(disctrictId):
+    callDict = {
+        '230': 200,
+        '210': 200,
+        '211': 200,
+        '212': 200,
+        '213': 200,
+        '214': 200,
+        '215': 200,
+        '216': 200,
+        '217': 200
+    }
+    return callDict[disctrictId]
 
 def getDataByDistrictDaily(districtID):
     paramDict = {
