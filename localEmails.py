@@ -9,6 +9,21 @@ def emailAlert(subject, body, to, bcc):
     msg = EmailMessage()
     # msg = MIMEMultipart('alternative')
     # msg.set_content(body)
+    tableRows = ''
+
+    for row in body:
+        tableRows= tableRows + '''
+                <tr>
+                  <td>''' + str(row[0]) + '''</td>
+                  <td>''' + str(row[1]) + '''</td>
+                  <td>''' + str(row[2]) + '''</td>
+                  <td>''' + str(row[3]) + '''</td>
+                  <td>''' + str(row[4]) + '''</td>
+                  <td>''' + str(row[5]) + '''</td>
+                  <td>''' + str(row[6]) + '''</td>
+                </tr>
+        '''
+
     bodyNew = '''
     <!DOCTYPE html>
         <html>
@@ -60,43 +75,28 @@ def emailAlert(subject, body, to, bcc):
             </style>
           </head>
           <body>
-            Dear Somebody,<br> <br>
-            Bla-bla-bla<br><br>
+            Dear User,<br> <br>
+            We have an important update for you. New vaccine slots have been added in your area.<br> 
+            The information is as provided below. Please make sure to register right away before the slots get exhausted.<br><br>
             <table>
               <thead>
                 <tr style="border: 1px solid #1b1e24;">
-                  <th>head1</th>
-                  <th>head2</th>
-                  <th>head3</th>
-                  <th>head4</th>
-                  <th>head5</th>
-                  <th>head6</th>
+                  <th>Session No</th>
+                  <th>Address</th>
+                  <th>Vaccine</th>
+                  <th>Available Slot</th>
+                  <th>Fee</th>
+                  <th>Capacity</th>
+                  <th>Min Age Limit</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                </tr>
+              <tbody>''' + tableRows + '''
               </tbody>
             </table>
-            <br>
-            Bla-bla.<br>
-            ''' + body + '''
-            <a href='mailto:some_email@gmail.com'>some_email@gmail.com</a>.<br> <br>
-            Thank you!
+            <br><br>
+            If you have any feedback, please back to us. <br>
+            Thank you! <br>
+            Team covid19-social
           </body>
         </html>
     '''
@@ -124,27 +124,28 @@ def emailAlert(subject, body, to, bcc):
     return serverResponse
 
 if __name__ == "__main__":
-    # emailLists = []
-    # for i in range(4):
-    #     emailLists.append("srtestdev1+testing"+str(i)+"@gmail.com")
-    #
-    # print(emailLists)
-    # try:
-    #     emailResponse = emailAlert("New SLot yyy -Hello world test!", "Hi there! This is a test email you are receiving as you are lovely.", emailLists, ["shubartking@gmail.com", "devanshi.verma123@gmail.com"])
-    #     print(emailResponse)
-    # except Exception as e:
-    #     print(e)
-    myargs = str(sys.argv)
-    subject = myargs[1]
-    body = myargs[2]
-    to = myargs[3]
-    bcc = myargs[4]
+    subject = "Vaccine Slots available at your area- Hurry!"
+    slots = "10:00AM-11:00AM, 11:00AM-12:00PM, 12:00PM-01:00PM, 01:00PM-04:00PM"
+    sessionList = [['1', 'Gandhi Nagar', 'Cowaxin', slots, 'Rs100', '321', '45'], ['2', 'Gandhi Nagar', 'Cowaxin', slots, 'Rs100', '321', '45'], ['3', 'Gandhi Nagar', 'Cowaxin', slots, 'Rs100', '321', '45'], ['4', 'Gandhi Nagar', 'Cowaxin', slots, 'Rs100', '321', '45'], ['5', 'Gandhi Nagar', 'Cowaxin', slots, 'Rs100', '321', '45'], ['6', 'Gandhi Nagar', 'Cowaxin', slots, 'Rs100', '321', '45']]
 
+    emailLists = ['srtestdev1@gmail.com']
+    bccList = ["shubartking@gmail.com", "devanshi.verma123@gmail.com"]
     try:
-        emailResponse = emailAlert(subject, body, to, bcc)
+        emailResponse = emailAlert(subject, sessionList, emailLists, bccList)
         print(emailResponse)
     except Exception as e:
         print(e)
+    # myargs = str(sys.argv)
+    # subject = myargs[1]
+    # body = myargs[2]
+    # to = myargs[3]
+    # bcc = myargs[4]
+    #
+    # try:
+    #     emailResponse = emailAlert(subject, body, to, bcc)
+    #     print(emailResponse)
+    # except Exception as e:
+    #     print(e)
 
     # to = "someone@gmail.com"
     # cc = "anotherperson@gmail.com,someone@yahoo.com"
