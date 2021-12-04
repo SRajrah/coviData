@@ -95,6 +95,49 @@ document.getElementById('platform').onchange = function() {
         mycontainer.appendChild(label4);
 //        mycontainer.append(document.createElement('br'));
 
+       //======================================================================text box HASH==========================
+            if (document.getElementById('textBox').value != ''){
+                var br1 = document.createElement('br');
+                var textHash = "#" + newCity + document.getElementById('textBox').value;
+                var labeltext = document.createElement('a');
+                labeltext.id = "textLabelId"
+                labeltext.htmlFor = 'instagram';
+                labeltext.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('textBox').value
+                labeltext.target = "_blank";
+                labeltext.appendChild(document.createTextNode(textHash));
+
+                mycontainer.appendChild(labeltext);
+                mycontainer.appendChild(br1);
+
+            }
+
+            document.getElementById('textBox').onchange = function() {
+                if(document.getElementById('platform').value == 'instagram'){
+
+                    if(document.getElementById('textBox').value == ''){
+                            mycontainer.removeChild(document.getElementById('textLabelId'));
+                    }
+                    else{
+                            if(mycontainer.contains(document.getElementById('textLabelId'))){
+                                mycontainer.removeChild(document.getElementById('textLabelId'));
+                            }
+
+                            var br = document.createElement('br');
+                            var textHash = "#" + newCity + "covid" + document.getElementById('textBox').value;
+                            var labeltext = document.createElement('a');
+                            labeltext.id = "textLabelId"
+                            labeltext.htmlFor = 'instagram';
+                            labeltext.href = "https://www.instagram.com/explore/tags/" + newCity + document.getElementById('textBox').value
+                            labeltext.target = "_blank";
+                            labeltext.appendChild(document.createTextNode(textHash));
+                            mycontainer.appendChild(labeltext);
+                            mycontainer.append(document.createElement('br'));
+                    }
+
+                }
+    }
+
+
         //======================================================================BED HASH==========================
             if (document.getElementById('bedBox').checked == true){
                 var br1 = document.createElement('br');
