@@ -15,6 +15,8 @@ def generateString():
 
     if request.method == "POST":
         #get form data into variables
+        resName = request.form.get("textBox")
+        resName = resName.strip()
         cityName = request.form.get("cityName")
         cityName = cityName.strip()
         platform = request.form.get("platform")
@@ -33,10 +35,12 @@ def generateString():
         ambulance = request.form.get("ambulanceBox")
         therapy = request.form.get("therapyBox")
 
-        print(cityName, requirement, beds, icu, oxygen, ventilator, tests, fabiflu, remdesivir, favipiravir, tocilizumab, plasma, food, ambulance, therapy, platform)
+        print(resName, cityName, requirement, beds, icu, oxygen, ventilator, tests, fabiflu, remdesivir, favipiravir, tocilizumab, plasma, food, ambulance, therapy, platform)
 
         if cityName is not None:
             if requirement is not None:
+                if resName != '':
+                    requiredItems.append(resName)
                 if beds == 'beds':
                     requiredItems.append(beds)
                 if icu == 'icu':
